@@ -1,8 +1,8 @@
 # Election_Analysis
 
 ## Project Overview
-Need to complete election results analysis by completeing the following tasks
-1. Calculat ethe total number of votes
+A colorado Board of Elections employee has asked me to complete election results analysis by doing the following tasks:
+1. Calculate the total number of votes
 2. get a complete list of all candidates who recieved votes
 3. calculate the total number of votes each candidate recieved
 4. calculate the percentage of votes each candidate recived
@@ -24,3 +24,5 @@ The analysis of the election show that:
   - Diana DeGette recieved 73.8% of the vote with a total of 272,892 votes.
   - Raymon Anthony Doane recieved 3.1% of the vote with a total of 11,606 votes.
 - The winner of the election was Diana DeGette, who recieved 73.8% of the vote and a total of 272,892 votes.
+## Challenge overview
+## Challenge summary
