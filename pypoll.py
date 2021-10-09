@@ -5,12 +5,10 @@
 #The winner of the election based on popular vote
 
 
-import datetime
+
 import csv
-import random
 import os
-from typing import Counter
-#import numpy
+
 
 # assign a variable for the file to load and the path
 #file_to_load="resources/election_results.csv"
@@ -21,6 +19,10 @@ candidate_options=[]
 candidate_votes={}
 #initialize the vote counter
 total_votes=0
+#track winning candidate
+winning_candidate=''
+winning_count=0
+winning_percentage=0
 #open the election results and read the file
 with open(file_to_load) as election_data:
 
@@ -43,34 +45,37 @@ with open(file_to_load) as election_data:
         candidate_votes[candidate_name]+=1
         total_votes+=1
 
-winning_candidate=''
-winning_count=0
-winning_percentage=0
+with open(file_to_save, "w") as txt_File:
+    header_output=(
+        f"Election Results\n"
+        f"----------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"----------------------\n" )
+    print(header_output,end="")
+        #save the final fvote ocunt ot the output txt file
+    txt_File.write(header_output)
 
-for candidate_name in candidate_votes:
-    votes=candidate_votes[candidate_name]
-    vote_percentage=float(votes)/float(total_votes)
-    print(f"{candidate_name}: {vote_percentage:.1%} ({votes:,})\n")
 
-    #determine if the votes are grater than the winning ocunt if so then reset the winning information
-    if (votes > winning_count) and (vote_percentage>winning_percentage) :
-        winning_count=votes
-        winning_percentage=vote_percentage
-        winning_candidate=candidate_name
-winning_candidate_summary=(
-    f"------------------------------------\n"
-    f"Winner:{winning_candidate}\n"
-    f"Winning vote Count: {winning_count:,}\n"
-    f"Winning Percentage:{winning_percentage:.1%}%\n"
-    f"-------------------------------------\n")
-print(winning_candidate_summary)
+    for candidate_name in candidate_votes:
+        votes=candidate_votes[candidate_name]
+        vote_percentage=float(votes)/float(total_votes)
+        
+        #print each candoidate and their vote and percentage to terminal
+        candidate_results=(f"{candidate_name}: {vote_percentage:.1%} ({votes:,})\n")
+        print(candidate_results)
+        #save results to output txt file
+        txt_File.write(candidate_results)
 
-"""
-#open file to save as txt
-with open(file_to_save,"w") as txt_file:
-    
-    #write data to the file
-    txt_file.write("Counties in the election\n")
-    txt_file.write("--------------------------\n")
-    txt_file.write("Arapahoe\nDenver\nJefferson")
-"""
+        #determine if the votes are grater than the winning ocunt if so then reset the winning information
+        if (votes > winning_count) and (vote_percentage>winning_percentage) :
+            winning_count=votes
+            winning_percentage=vote_percentage
+            winning_candidate=candidate_name
+    #summerize the winning candidate and print it out to terminal
+    winning_candidate_summary=(
+        f"------------------------------------\n"
+        f"Winner:{winning_candidate}\n"
+        f"Winning vote Count: {winning_count:,}\n"
+        f"Winning Percentage:{winning_percentage:.1%}%\n"
+        f"-------------------------------------\n")
+    txt_File.write(winning_candidate_summary)
