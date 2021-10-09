@@ -50,8 +50,20 @@ winning_percentage=0
 for candidate_name in candidate_votes:
     votes=candidate_votes[candidate_name]
     vote_percentage=float(votes)/float(total_votes)
-    print(f"{candidate_name}: recieved {vote_percentage:.1%} of the vote.")
- 
+    print(f"{candidate_name}: {vote_percentage:.1%} ({votes:,})\n")
+
+    #determine if the votes are grater than the winning ocunt if so then reset the winning information
+    if (votes > winning_count) and (vote_percentage>winning_percentage) :
+        winning_count=votes
+        winning_percentage=vote_percentage
+        winning_candidate=candidate_name
+winning_candidate_summary=(
+    f"------------------------------------\n"
+    f"Winner:{winning_candidate}\n"
+    f"Winning vote Count: {winning_count:,}\n"
+    f"Winning Percentage:{winning_percentage:.1%}%\n"
+    f"-------------------------------------\n")
+print(winning_candidate_summary)
 
 """
 #open file to save as txt
