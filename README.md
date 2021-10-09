@@ -7,12 +7,9 @@ A colorado Board of Elections employee has asked me to complete election results
 3. calculate the total number of votes each candidate recieved
 4. calculate the percentage of votes each candidate recived
 5. determine the winner of the election based on popular vote
-
-## Challenge overview
-The election commision wants to understand what the voter turnout was like for each county. They want to know specifically
-- The voter turnout for each county
-- the percentage of votes from each county out of the total number of votes
-- the county with the highest turnout of voters
+6. The voter turnout for each county
+7. the percentage of votes from each county out of the total number of votes
+8. the county with the highest turnout of voters
 
 ## Resources
 - Data source:election_results.csv
